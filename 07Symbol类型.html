@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Symbol 它表示的是独一无二的值
+        //最大的用途：用来定义对象的私有变量
+        //如果用 Symbol 定义的是对象中的变量，取值时一定要用 [变量名]
+        //如果用 Symbol 定义的是对象中的变量，该变量不能作为key，无法用 for 循环遍历
+        //注意： 这个数据类型实际开发中用的不多
+
+        let name1 = Symbol('张三')
+        let name2 = Symbol('张三')
+        console.log(name1 === name2);  //false
+
+        let s1 = Symbol('blue')
+        let obj = {
+            [s1]: 'blue'
+        }
+        console.log(obj[s1]);  //如果用 Symbol 定义的是对象中的变量，取值时一定要用 [变量名] 
+        console.log(obj.s1); //undefined
+
+        for (let k in obj) {
+            console.log(k);  //没有输出
+        }
+        console.log(Object.keys(obj)); //输出一个空的数组
+
+    </script>
+</body>
+
+</html>

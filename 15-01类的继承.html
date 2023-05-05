@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Animal {
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+            sayName() {
+                return this.name
+            }
+            sayAge() {
+                return this.age
+            }
+        }
+        class Dog extends Animal {
+            constructor(name, age, color) {
+                //super关键字要写在this前面
+                super(name, age)// 等同于 Animal.call(this,name,age); 继承父类的属性
+                this.color = color
+            }
+            //子类自己的方法
+            sayColor() {
+                return `颜色是${this.color}`
+            }
+            //重写父类的方法
+            sayName() {
+                return this.name + super.sayAge() + this.color
+            }
+        }
+        let d1 = new Dog('小黄', 3, '黄色')
+        console.log(d1.sayName());
+        console.log(d1.sayAge());
+        console.log(d1.sayColor());
+    </script>
+</body>
+
+</html>

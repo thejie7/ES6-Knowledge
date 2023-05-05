@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //let 声明变量没有变量提升，var 有变量提升
+        //let 是一个块作用域，let声明的变量只在它所在的代码块有效。
+        //let 不可以重复声明 ，var 可以重复
+        //const 声明常量，一旦声明就不能被修改，除此之外也有 let 的三个特性。
+
+        //例1
+        //var会变量提升 而let不会
+        //如下代码，会在前面自动添加一个var a; 而不会自动添加let b;
+        console.log(a)  //undefined
+        console.log(b)  //报错
+        var a = 1;
+        let b = 2;
+
+        // 例2
+        // var 的重复声明
+        var c = 1;
+        var c = 3;
+        console.log(c);    //3 
+
+        //let 不可以重复声明
+        let d = 1;
+        // let d = 3;
+        console.log(d);    //报错
+
+
+        // 例 4
+        //const 声明常量，一旦声明就不能被修改
+        const max = 30;
+        max = 40;
+        console.log(max);   //会报错
+
+    </script>
+</body>
+
+</html>

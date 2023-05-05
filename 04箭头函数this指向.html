@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击</button>
+    <script>
+        //箭头函数没有this的指向，箭头函数内部的this值只能通过查找作用域链来确定
+        // 如果箭头函数被一个非箭头函数所包括，那么this的值与该函数的所属对象相等，否则 则是全局的window对象
+
+        //es5中使用bind改变函数中的this指向
+        let pageHandler1 = {
+            id: 123,
+            init: function () {
+                document.addEventListener('click', function (e) {
+                    this.doSomeThings(e.type);  //这里的this原指向的是document  因此需要用bind()改变this指向为pageHandler 
+                }.bind(this), false)
+            },
+            doSomeThings: function (type) {
+                console.log(`事件类型${type},当前id${this.id}`);
+            }
+        }
+        // pageHandler1.init();
+
+        //es6中的箭头函数的this指向
+        let pageHandler2 = {
+            id: 123,
+            init: function () {
+                document.addEventListener('click', (e) => {
+                    this.doSomeThings(e.type);
+                }, false)
+            },
+            doSomeThings: function (type) {
+                console.log(`事件类型${type},当前id${this.id}`);
+            }
+        }
+        pageHandler2.init();
+
+
+
+        //例1 我们有个按钮，当我们点击了之后，就禁用这个按钮。3秒钟之后开启这个按钮
+        //es5写法
+        let btn = document.querySelector('button')
+        // btn.addEventListener('click', function () {
+        //     this.disabled = true;  //这个this指向btn这个按钮
+        //     setTimeout(function () {
+        //         //this.disabled=false;  //这个this指向的window 因此我们需要改变this的指向
+        //         this.disabled = false;
+        //     }.bind(this), 3000)  //这个this指向的是btn
+        // })
+        //es6写法
+        btn.addEventListener('click', function () {
+            this.disabled = true;
+            setTimeout(() => {
+                console.log(this);
+                this.disabled = false;
+            }, 3000)
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Person {
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+            sayName() {
+                return this.name
+            }
+            sayAge() {
+                return this.age
+            }
+        }
+
+        // 小技巧：通过 Objec.assign() 方法(详见对象的扩展功能)一次性向类中添加多个方法
+        /*
+        Object.assign(Person.prototype, {
+            sayName() {
+                return this.name;
+            },
+            sayAge() {
+                return this.age;
+            }
+        })*/
+        let p1 = new Person('张三', 18)
+        console.log(p1);
+        console.log(p1.sayName());
+        console.log(p1.sayAge());
+    </script>
+</body>
+
+</html>

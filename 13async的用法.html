@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //async 函数，它就是 Generator 函数的 语法糖
+        //作用：使得异步操作更加方便
+        //凡是在前面添加了async的函数在执行后都会自动返回一个Promise对象
+        async function test() {
+
+        }
+        let result = test()
+        console.log(result)//即便代码里test函数什么都没返回，我们依然打出了Promise对象
+
+        //await必须在async函数里使用，不能单独使用
+        //await的作用之一就是获取后面Promise对象成功状态传递出来的参数传给 then 函数。
+        //如果 async 函数中有多个 await , 那么 then 函数 会等待所有的 await 指令运行完才去执行
+        async function f1() {
+            let s = await 'hello world'
+            let data = await s.split('');
+            return data;
+        }
+        f1().then(v => { console.log(v) }).catch(e => { console.log(e) });
+
+        // 何一个await语句后面的 Promise 对象变为reject状态，那么整个async函数都会中断执行。
+        async function f2() {
+            await Promise.reject('出错了');
+            await Promise.resolve('hello');
+        }
+        f2().then(v => { console.log(v) }).catch(e => { console.log(e) });      //输出 出错了
+
+        // 针对上诉遇到 reject状态，就中断执行的问题，可以通过 try...catch 代码块解决
+        async function f3() {
+            try {
+                await Promise.reject('出错了');
+            } catch (error) {
+
+            }
+            return await Promise.resolve('hello');
+        }
+
+        f3().then(v => console.log(v)).catch(e => console.log(e))     // 输出 hello
+
+    </script>
+</body>
+
+</html>

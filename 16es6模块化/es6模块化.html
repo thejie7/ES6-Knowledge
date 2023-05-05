@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="module">
+        import { name, age, sayName } from './index.js'
+        //解构赋值 { name, age, sayName } 
+        console.log(name, age);
+        sayName()
+        //导出默认内容
+        /*import myFunction from './index.js'
+        myFunction()*/
+        //同时导出默认内容与其他接口
+        /*import myFunction, { myVariable } from './index.js'
+        myFunction()
+        console.log(myVariable);*/
+        //或者
+        import * as f from './index.js' //as 对内容重命名
+        f.myFunction()
+        console.log(f.myVariable);
+        import { Person } from './index.js'
+        let p = new Person("男")
+        console.log(p.sex);
+    </script>
+</body>
+
+</html>

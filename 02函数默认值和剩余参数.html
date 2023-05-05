@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //函数默认值
+        //例一  解决函数没有传递参数时  使用默认值进行运算
+        //ES5写法
+        function add(a, b) {
+            a = a || 10;  //当没有传递参数时  a取10 b取10
+            b = b || 10;
+            return a + b;
+        }
+        console.log(add());  //20
+        //ES6写法
+        function add(a = 10, b = 10) {
+            return a + b;
+        }
+        console.log(add());  //20
+
+        //例二 默认的值也可以是函数
+        function add(a = 10, b = getVal(5)) {
+            return a + b;
+        }
+        function getVal(val) {
+            return val + 5;
+        }
+        console.log(add());  //20
+
+
+        //剩余参数
+        //由...和一个紧跟着的具名参数组成：...keys
+        //...keys 解决了arguments的问题
+        function checkArgs(...args) {
+            console.log(args);    //返回一个真实的实参数组['a','b','c']
+            console.log(arguments);  //返回一个实参伪数组
+        }
+        checkArgs('a', 'b', 'c');
+
+        //例1  选取对象中的某些参数
+        //es5的写法
+        // function pick(obj) {
+        //     let result = {}
+        //     for (let i = 1; i < arguments.length; i++) {
+        //         result[arguments[i]] = obj[arguments[i]]
+        //     }
+        //     return result;
+        // }
+
+        // let book = {
+        //     title: '标题',
+        //     author: '作者',
+        //     year: 2022,
+        // }
+        // let bookData = pick(book, 'author', 'year')
+        // console.log(bookData);
+
+        //es6的写法
+        // function pick(obj, ...keys) {
+        //     let result = {}
+        //     for (let i = 0; i < keys.length; i++) {
+        //         result[keys[i]] = obj[keys[i]]
+        //     }
+        //     return result;
+        // }
+
+        // let book = {
+        //     title: '标题',
+        //     author: '作者',
+        //     year: 2022,
+        // }
+        // let bookData = pick(book, 'author', 'year')
+        // console.log(bookData);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //解构赋值是对赋值运算符的一种扩展。它通常针对数组和对象进行操作。
+        //优点：代码书写简洁且易读性高
+
+        //例1 对对象的解构
+        //完全结构
+        let obj1 = {
+            id: 123,
+            color: 'blue'
+        }
+        let { id, color } = obj1
+        console.log(id, color);
+
+        //不完全解构
+        let obj2 = {
+            a: {
+                id: 123
+            },
+            b: [],
+            c: 'sadjwid'
+        }
+        //可忽略bc
+        // let { a } = obj2
+        // console.log(a);
+
+        //剩余运算符 使用此法将其它属性展开到一个对象中存储
+        let { a, ...keys } = obj2
+        console.log(a, keys);
+
+        // 默认值 a1 的值 10 ，b1 的值 20
+        let { a1, b1 = 20 } = { a1: 10 }
+        console.log(a1, b1);
+
+
+        //例2 对数组结构
+        let [i, j, k] = [1, 2, 3]
+        console.log(i, j, k);
+
+
+
+    </script>
+</body>
+
+</html>

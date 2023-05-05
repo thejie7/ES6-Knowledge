@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //在 JavaScript 中，可以使用 Mixin 模式来将多个类混入到一个类中。Mixin 是一种编程模式，它允许我们将一个或多个对象的属性和方法复制到另一个对象中，从而实现代码重用。
+        //下面是一个简单的示例代码，展示如何使用 Mixin 将多个类混入到一个类中：
+        // 定义一个 Mixin 对象
+        let Mixin = {
+            mix1: function () {
+                console.log('mix1');
+            },
+
+            mix2: function () {
+                console.log('mix2');
+            }
+        };
+
+        // 定义一个类，并将 Mixin 对象中的方法混入到该类中
+        class MyClass {
+            constructor() { }
+
+            myMethod() {
+                console.log('myMethod');
+            }
+        }
+
+        Object.assign(MyClass.prototype, Mixin);
+
+        // 创建 MyClass 实例并调用其方法
+        let myInstance = new MyClass();
+        console.log(myInstance);
+        myInstance.myMethod(); // 输出 "myMethod"
+        myInstance.mix1(); // 输出 "mix1"
+        myInstance.mix2(); // 输出 "mix2"
+    </script>
+</body>
+
+</html>

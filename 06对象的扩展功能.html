@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //例1 对象的一些方法简写
+        let name = '张三'
+        let age = 18
+        let person = {
+            name, //等价于name:name
+            age,  //等价于age:age  
+            sayName() {    //等价于sayName:function(){}
+                console.log(this.name);
+            }
+        }
+        person.sayName();
+
+        //例2 返回值成为对象
+        function getPoint(x, y) {
+            return { x, y }
+        }
+        console.log(getPoint(10, 20));  //{x:10,y:20}
+
+        // 对象的方法：
+        // is()  和 ===
+        // 比较两个值是否严格相等
+        console.log(NaN === NaN);  //false  ,===有缺陷
+        console.log(Object.is(NaN, NaN));  //true
+
+        //assign() 对象的合并 浅拷贝
+        let newObj = Object.assign({}, { a: 1 }, { b: 2 })
+        console.log(newObj);  //{a:1,b:2}
+    </script>
+</body>
+
+</html>
